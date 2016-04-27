@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var currentValue: Int = 0
-    var targetValue: Int = 0
+    var currentValue = 0
+    var targetValue = 0
+    var score = 0
+    var round = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +30,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var targetLabel: UILabel!
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var roundLabel: UILabel!
+    
     @IBAction func showAlert() {
+        let difference = abs(currentValue - targetValue)
         
-        let message = "The value of the slider is: \(currentValue)" + "\n The target value is: \(targetValue)"
+        let points = 100 - difference
+        
+        score += points
+        
+        let message = "The value of the slider is: \(currentValue)" + "\n The target value is: \(targetValue)" + "\n You scored \(points) points!"
         
         let alert = UIAlertController(title: "Hello, World!", message: message, preferredStyle: .Alert)
         
@@ -49,6 +60,7 @@ class ViewController: UIViewController {
     }
     
     func startNewRound() {
+        round += 1
         currentValue = 50
         targetValue = 1 + Int(arc4random_uniform(100))
         slider.value = Float(currentValue)
@@ -56,8 +68,8 @@ class ViewController: UIViewController {
     
     func updateLabels() {
         targetLabel.text = "\(targetValue)"
+        scoreLabel.text = "\(score)"
+        roundLabel.text = "\(round)"
     }
-    
-    
 }
 
