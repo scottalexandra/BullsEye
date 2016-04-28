@@ -3,4 +3,4 @@ Position the slider in the correct place to score mega points!
 
 Taken from the ios Apprentice: Getting Started Tutorial by Matthisj Hollemans (www.matthijshollemans.com)
 
-![](bullseyescreenshot.png)
+![](BullsEye/bullseyescreenshot.png)
